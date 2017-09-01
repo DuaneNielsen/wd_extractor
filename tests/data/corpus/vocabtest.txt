@@ -1,0 +1,5 @@
+this is the basic vocab
+this is the next vocab
+you owe me $20
+this is a floating point number with a probability of 1.0
+$20 1.0 0.2 10

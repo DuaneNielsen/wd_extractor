@@ -1,0 +1,245 @@
+<SEC-DOCUMENT>0000002488-17-000010.txt : 20170118
+<SEC-HEADER>0000002488-17-000010.hdr.sgml : 20170118
+<ACCEPTANCE-DATETIME>20170118163258
+ACCESSION NUMBER:		0000002488-17-000010
+CONFORMED SUBMISSION TYPE:	4
+PUBLIC DOCUMENT COUNT:		1
+CONFORMED PERIOD OF REPORT:	20170115
+FILED AS OF DATE:		20170118
+DATE AS OF CHANGE:		20170118
+
+ISSUER:		
+
+	COMPANY DATA:	
+		COMPANY CONFORMED NAME:			ADVANCED MICRO DEVICES INC
+		CENTRAL INDEX KEY:			0000002488
+		STANDARD INDUSTRIAL CLASSIFICATION:	SEMICONDUCTORS & RELATED DEVICES [3674]
+		IRS NUMBER:				941692300
+		STATE OF INCORPORATION:			DE
+		FISCAL YEAR END:			1227
+
+	BUSINESS ADDRESS:	
+		STREET 1:		ONE AMD PL
+		STREET 2:		MS 68
+		CITY:			SUNNYVALE
+		STATE:			CA
+		ZIP:			94085
+		BUSINESS PHONE:		4087495441
+
+	MAIL ADDRESS:	
+		STREET 1:		ONE AMD PLACE
+		STREET 2:		MS 68
+		CITY:			SUNNYVALE
+		STATE:			CA
+		ZIP:			94085
+
+REPORTING-OWNER:	
+
+	OWNER DATA:	
+		COMPANY CONFORMED NAME:			WOLIN HARRY A
+		CENTRAL INDEX KEY:			0001273666
+
+	FILING VALUES:
+		FORM TYPE:		4
+		SEC ACT:		1934 Act
+		SEC FILE NUMBER:	001-07882
+		FILM NUMBER:		17533803
+
+	MAIL ADDRESS:	
+		STREET 1:		ONE AMD PLACE
+		CITY:			SUNNYVALE
+		STATE:			CA
+		ZIP:			94088
+</SEC-HEADER>
+<DOCUMENT>
+<TYPE>4
+<SEQUENCE>1
+<FILENAME>wf-form4_148477516560023.xml
+<DESCRIPTION>FORM 4
+<TEXT>
+<XML>
+<?xml version="1.0"?>
+<ownershipDocument>
+
+    <schemaVersion>X0306</schemaVersion>
+
+    <documentType>4</documentType>
+
+    <periodOfReport>2017-01-15</periodOfReport>
+
+    <notSubjectToSection16>0</notSubjectToSection16>
+
+    <issuer>
+        <issuerCik>0000002488</issuerCik>
+        <issuerName>ADVANCED MICRO DEVICES INC</issuerName>
+        <issuerTradingSymbol>AMD</issuerTradingSymbol>
+    </issuer>
+
+    <reportingOwner>
+        <reportingOwnerId>
+            <rptOwnerCik>0001273666</rptOwnerCik>
+            <rptOwnerName>WOLIN HARRY A</rptOwnerName>
+        </reportingOwnerId>
+        <reportingOwnerAddress>
+            <rptOwnerStreet1>ADVANCED MICRO DEVICES, INC.</rptOwnerStreet1>
+            <rptOwnerStreet2>ONE AMD PLACE</rptOwnerStreet2>
+            <rptOwnerCity>SUNNYVALE</rptOwnerCity>
+            <rptOwnerState>CA</rptOwnerState>
+            <rptOwnerZipCode>94085</rptOwnerZipCode>
+            <rptOwnerStateDescription></rptOwnerStateDescription>
+        </reportingOwnerAddress>
+        <reportingOwnerRelationship>
+            <isDirector>0</isDirector>
+            <isOfficer>1</isOfficer>
+            <isTenPercentOwner>0</isTenPercentOwner>
+            <isOther>0</isOther>
+            <officerTitle>SVP &amp; GC</officerTitle>
+            <otherText></otherText>
+        </reportingOwnerRelationship>
+    </reportingOwner>
+
+    <nonDerivativeTable>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-01-15</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>M</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>107843</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>821602</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+        <nonDerivativeTransaction>
+            <securityTitle>
+                <value>Common Stock</value>
+            </securityTitle>
+            <transactionDate>
+                <value>2017-01-15</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>S</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+                <footnoteId id="F1"/>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>33928</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>9.9577</value>
+                    <footnoteId id="F2"/>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>D</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>787674</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </nonDerivativeTransaction>
+    </nonDerivativeTable>
+
+    <derivativeTable>
+        <derivativeTransaction>
+            <securityTitle>
+                <value>RSU Award</value>
+            </securityTitle>
+            <conversionOrExercisePrice>
+                <footnoteId id="F3"/>
+            </conversionOrExercisePrice>
+            <transactionDate>
+                <value>2017-01-15</value>
+            </transactionDate>
+            <transactionCoding>
+                <transactionFormType>4</transactionFormType>
+                <transactionCode>A</transactionCode>
+                <equitySwapInvolved>0</equitySwapInvolved>
+            </transactionCoding>
+            <transactionAmounts>
+                <transactionShares>
+                    <value>0</value>
+                </transactionShares>
+                <transactionPricePerShare>
+                    <value>0</value>
+                </transactionPricePerShare>
+                <transactionAcquiredDisposedCode>
+                    <value>A</value>
+                </transactionAcquiredDisposedCode>
+            </transactionAmounts>
+            <exerciseDate>
+                <footnoteId id="F4"/>
+            </exerciseDate>
+            <expirationDate>
+                <footnoteId id="F4"/>
+            </expirationDate>
+            <underlyingSecurity>
+                <underlyingSecurityTitle>
+                    <value>Common Stock</value>
+                </underlyingSecurityTitle>
+                <underlyingSecurityShares>
+                    <value>0.0</value>
+                </underlyingSecurityShares>
+            </underlyingSecurity>
+            <postTransactionAmounts>
+                <sharesOwnedFollowingTransaction>
+                    <value>326797</value>
+                </sharesOwnedFollowingTransaction>
+            </postTransactionAmounts>
+            <ownershipNature>
+                <directOrIndirectOwnership>
+                    <value>D</value>
+                </directOrIndirectOwnership>
+            </ownershipNature>
+        </derivativeTransaction>
+    </derivativeTable>
+
+    <footnotes>
+        <footnote id="F1">Represents shares automatically sold pursuant to an irrevocable sell to cover election to satisfy tax withholding obligations in connection with the Reporting Person's Restricted Stock Unit (&quot;RSU&quot;) vesting.</footnote>
+        <footnote id="F2">Transaction executed in multiple trades at prices ranging from $9.79 to $10.21 per share, inclusive. The price reported in column 4 above reflects the weighted average sale price per share. The Reporting Person hereby undertakes to provide the SEC staff, the Issuer or a security holder of the Issuer, upon request, full information regarding the number of shares sold at each respective price within the range set forth in this footnote.</footnote>
+        <footnote id="F3">Each restricted stock unit represents a contingent right to receive one share of common stock.</footnote>
+        <footnote id="F4">This award vests 33% on January 15, 2017 then vests 67% on January 15, 2018.</footnote>
+    </footnotes>
+
+    <remarks></remarks>
+
+    <ownerSignature>
+        <signatureName>/s/ Harry Wolin</signatureName>
+        <signatureDate>2017-01-18</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
+</XML>
+</TEXT>
+</DOCUMENT>
+</SEC-DOCUMENT>
