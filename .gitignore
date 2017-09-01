@@ -10,6 +10,7 @@ parts
 sdist
 develop-eggs
 .installed.cfg
+.cache
 
 # Installer logs
 pip-log.txt
