@@ -3,14 +3,13 @@ import numpy as np
 
 class Fofe:
 
-    #def __init__(self):
+    def __init__(self, document, leftFF, rightFF):
+        self.document = document
+        self.leftFF = leftFF
+        self.rightFF = rightFF
 
-
-
-
-
-    def focusContextMatrix(self, document, lookahead):
-        length = document.length()
+    def focusContextMatrix(self, lookahead):
+        length = self.document.length()
         i = np.identity(length)
         l = np.identity(length)
 
@@ -20,14 +19,14 @@ class Fofe:
 
         return i
 
-    def leftContextMatrix(self, document, forget_factor):
+    def leftContextMatrix(self):
 
-        lm = self.leftPowersMatrix(document.length(), forget_factor)
-        i = self.powersToFofeMatrix(lm, forget_factor)
+        lm = self.leftPowersMatrix(self.document.length())
+        i = self.powersToFofeMatrix(lm, self.leftFF)
 
         return i
 
-    def leftPowersMatrix(self, length, forget_factor):
+    def leftPowersMatrix(self, length):
         l = []
         for row in range(0, length):
             r = []
@@ -52,13 +51,13 @@ class Fofe:
 
         return i
 
-    def rightContextMatrix(self, document, forget_factor, lookahead):
-        l = self.leftPowersMatrix(document.length(), forget_factor)
+    def rightContextMatrix(self, lookahead):
+        l = self.leftPowersMatrix(self.document.length())
         r = l.T
         for look in range(0, lookahead):
             r = self.shiftRight(r)
 
-        return self.powersToFofeMatrix(r, forget_factor)
+        return self.powersToFofeMatrix(r, self.rightFF)
 
     def shiftRight(self,matrix):
 

@@ -24,14 +24,14 @@ def test_data():
 def testCurrentContext(corpus2):
     docator = corpus2.getAllDocuments()
     doc = next(docator)
-    fofe = Fofe()
-    #print(fofe.currentContextMatrix(doc))
-    left = fofe.leftContextMatrix(doc, 0.1)
-    focus = fofe.focusContextMatrix(doc,1)
-    right = fofe.rightContextMatrix(doc, 0.9, 1)
-
     a = 0.1
     b = 0.9
+    fofe = Fofe(doc, a, b)
+
+    left = fofe.leftContextMatrix()
+    focus = fofe.focusContextMatrix(1)
+    right = fofe.rightContextMatrix(1)
+
 
     test_left = np.array([[0.0,0.0,0.0,0.0,0.0],
                           [a,0.0,0.0,0.0,0.0],
