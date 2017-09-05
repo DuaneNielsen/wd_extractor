@@ -1,36 +1,23 @@
 from pathlib import Path
 from pycorenlp import StanfordCoreNLP
-from .Fofe import Fofe
-
+from .Vocabulary import Vocabulary
+from .Documentator import Documentator
+from .Tokenizer import Tokenizer
 
 class Corpus:
 
-    def __init__(self, tokenizer, directory, fileregex ):
-        self.tokenizer = tokenizer
-        self.nlp = StanfordCoreNLP('http://localhost:9000')
+    def __init__(self, directory, fileregex):
+        self.tokenizer = Tokenizer()
         self.directory = directory
-        self.vocab = {}
-        pathlist = Path(directory).glob(fileregex)
-        for path in pathlist:
-            print('**********')
-            print(path)
-            print('**********')
-            # because path is object not string
-            handle = open(path, "r")
-            text = handle.read()
-            output_json = self.nlp.annotate(text, properties={
-                'annotators': 'tokenize,ssplit,ner',
-                'outputFormat': 'json'
-            })
+        self.vocab = Vocabulary()
+        self.directory = directory
+        self.fileregex = fileregex
 
-            # init vocabulary
-            for sentence in output_json['sentences']:
-                for token in sentence['tokens']:
-                    self.vocab[self.tokenizer.tokenGetWord(token)] = 1
+        for document in self.getAllDocuments():
+            for token in document.tokens:
+                self.vocab.add(token)
+        self.vocab.buildOneHotLookup()
 
-    def makeFofe(self, forgetFactor, path):
-        return Fofe(self.vocab, self.tokenizer, forgetFactor, path)
-
-    def getPathList(self):
-        return Path(self.directory).glob('**/*.txt')
-
+    def getAllDocuments(self):
+        filepaths = Path(self.directory).glob(self.fileregex)
+        return Documentator(filepaths, self)
