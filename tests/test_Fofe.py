@@ -30,7 +30,33 @@ def testCurrentContext(corpus2):
     focus = fofe.focusContextMatrix(doc,1)
     right = fofe.rightContextMatrix(doc, 0.9, 1)
 
-    print(right)
+    a = 0.1
+    b = 0.9
+
+    test_left = np.array([[0.0,0.0,0.0,0.0,0.0],
+                          [a,0.0,0.0,0.0,0.0],
+                          [a*a,a,0.0,0.0,0.0],
+                          [a*a*a,a*a,a,0.0,0.0],
+                          [a*a*a*a,a*a*a,a*a,a,0.0]])
+
+    assert np.allclose(left,test_left)
+
+    test_focus = np.array([[1.0, 1.0, 0.0, 0.0, 0.0],
+                           [0.0, 1.0, 1.0, 0.0, 0.0],
+                           [0.0, 0.0, 1.0, 1.0, 0.0],
+                           [0.0, 0.0, 0.0, 1.0, 1.0],
+                           [0.0, 0.0, 0.0, 0.0, 1.0],
+                           ])
+    assert np.array_equal(focus,test_focus)
+
+    test_right = np.array([[0.0, 0.0, b, b*b,   b*b*b],
+                           [0.0, 0.0, 0.0, b,   b*b],
+                           [0.0, 0.0, 0.0, 0.0, b],
+                           [0.0, 0.0, 0.0, 0.0, 0.0],
+                           [0.0, 0.0, 0.0, 0.0, 0.0],
+                           ])
+    assert np.array_equal(right, test_right)
+
 
 '''
 def test_fofe(corpus1):

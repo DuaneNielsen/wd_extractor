@@ -14,14 +14,6 @@ class Fofe:
         i = np.identity(length)
         l = np.identity(length)
 
-        #lookahead += 1
-
-        #for look in range(1, lookahead):
-        #    l = np.identity(length - look)
-        #    l = np.pad(l, look, 'constant')
-        #    l = l[look:, :5]
-        #    i = i + l
-
         for look in range(0, lookahead):
             l = self.shiftRight(l)
             i = i + l
@@ -48,7 +40,6 @@ class Fofe:
 
         return np.matrix(l)
 
-
     def powersToFofeMatrix(self, powers_matrix, forget_factor):
 
         i = np.ones(powers_matrix.shape)
@@ -70,7 +61,9 @@ class Fofe:
         return self.powersToFofeMatrix(r, forget_factor)
 
     def shiftRight(self,matrix):
+
         matrix = np.pad(matrix, ((0, 0), (0, 1)), 'constant')
         matrix = np.roll(matrix, 1)[:, :matrix.shape[1]-1]
+
         return matrix
 
