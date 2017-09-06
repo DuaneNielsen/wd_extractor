@@ -17,45 +17,79 @@ def corpus1():
 def corpus2():
     return Corpus('tests/data/fofe','fofetest2.txt')
 
+@pytest.fixture(scope="module")
+def leftFFMatrix():
+    a = 0.1
+    return np.array([[0.0,0.0,0.0,0.0,0.0],
+                          [a,0.0,0.0,0.0,0.0],
+                          [a*a,a,0.0,0.0,0.0],
+                          [a*a*a,a*a,a,0.0,0.0],
+                          [a*a*a*a,a*a*a,a*a,a,0.0]])
+
+@pytest.fixture(scope="module")
+def focusFFMatrix():
+    return np.array([[1.0, 1.0, 0.0, 0.0, 0.0],
+                           [0.0, 1.0, 1.0, 0.0, 0.0],
+                           [0.0, 0.0, 1.0, 1.0, 0.0],
+                           [0.0, 0.0, 0.0, 1.0, 1.0],
+                           [0.0, 0.0, 0.0, 0.0, 1.0],
+                           ])
+
+@pytest.fixture(scope="module")
+def rightFFMatrix():
+    b = 0.9
+    return np.array([[0.0, 0.0, b, b*b,   b*b*b],
+                           [0.0, 0.0, 0.0, b,   b*b],
+                           [0.0, 0.0, 0.0, 0.0, b],
+                           [0.0, 0.0, 0.0, 0.0, 0.0],
+                           [0.0, 0.0, 0.0, 0.0, 0.0],
+                           ])
+
 def test_data():
     path = Path('tests/data/fofe').glob('**/*.txt')
     assert path is not None
 
-def testCurrentContext(corpus2):
+def testCurrentContext(corpus2, leftFFMatrix, focusFFMatrix, rightFFMatrix):
     docator = corpus2.getAllDocuments()
     doc = next(docator)
     a = 0.1
     b = 0.9
     fofe = Fofe(doc, a, b)
 
-    left = fofe.leftContextMatrix()
-    focus = fofe.focusContextMatrix(1)
-    right = fofe.rightContextMatrix(1)
+    left = fofe.leftContextFFMatrix()
+    focus = fofe.focusContextFFMatrix(1)
+    right = fofe.rightContextFFMatrix(1)
+
+    assert np.allclose(left,leftFFMatrix)
+
+    assert np.array_equal(focus,focusFFMatrix)
+
+    assert np.array_equal(right, rightFFMatrix)
+
+def testDoc2Matrix(corpus1):
+    docator = corpus1.getAllDocuments()
+    doc = next(docator)
+    a = 0.1
+    b = 0.9
+    fofe = Fofe(doc, a, b)
+    data = fofe.doc2matrix()
+    identity = np.identity(3)
+    assert np.array_equal(data, identity)
+
+def testEncode(corpus2, leftFFMatrix, focusFFMatrix, rightFFMatrix):
+    docator = corpus2.getAllDocuments()
+    doc = next(docator)
+    a = 0.1
+    b = 0.9
+    fofe = Fofe(doc, a, b)
+    data = fofe.doc2matrix()
+    encoded = fofe.encode()
+
+    assert np.array_equal(leftFFMatrix.dot(data), encoded[0])
+    assert np.array_equal(focusFFMatrix.dot(data), encoded[1])
+    assert np.array_equal(rightFFMatrix.dot(data), encoded[2])
 
 
-    test_left = np.array([[0.0,0.0,0.0,0.0,0.0],
-                          [a,0.0,0.0,0.0,0.0],
-                          [a*a,a,0.0,0.0,0.0],
-                          [a*a*a,a*a,a,0.0,0.0],
-                          [a*a*a*a,a*a*a,a*a,a,0.0]])
-
-    assert np.allclose(left,test_left)
-
-    test_focus = np.array([[1.0, 1.0, 0.0, 0.0, 0.0],
-                           [0.0, 1.0, 1.0, 0.0, 0.0],
-                           [0.0, 0.0, 1.0, 1.0, 0.0],
-                           [0.0, 0.0, 0.0, 1.0, 1.0],
-                           [0.0, 0.0, 0.0, 0.0, 1.0],
-                           ])
-    assert np.array_equal(focus,test_focus)
-
-    test_right = np.array([[0.0, 0.0, b, b*b,   b*b*b],
-                           [0.0, 0.0, 0.0, b,   b*b],
-                           [0.0, 0.0, 0.0, 0.0, b],
-                           [0.0, 0.0, 0.0, 0.0, 0.0],
-                           [0.0, 0.0, 0.0, 0.0, 0.0],
-                           ])
-    assert np.array_equal(right, test_right)
 
 
 '''

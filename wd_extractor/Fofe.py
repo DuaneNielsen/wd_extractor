@@ -1,5 +1,5 @@
 import numpy as np
-
+import tensorflow as tf
 
 class Fofe:
 
@@ -7,8 +7,13 @@ class Fofe:
         self.document = document
         self.leftFF = leftFF
         self.rightFF = rightFF
+        self.gramsize = 1
+        self.leftFFMatrix = self.leftContextFFMatrix()
+        self.focusFFMatrix = self.focusContextFFMatrix(1)
+        self.rightFFMatrix = self.rightContextFFMatrix(1)
+        self.docMatrix = self.doc2matrix()
 
-    def focusContextMatrix(self, lookahead):
+    def focusContextFFMatrix(self, lookahead):
         length = self.document.length()
         i = np.identity(length)
         l = np.identity(length)
@@ -19,7 +24,7 @@ class Fofe:
 
         return i
 
-    def leftContextMatrix(self):
+    def leftContextFFMatrix(self):
 
         lm = self.leftPowersMatrix(self.document.length())
         i = self.powersToFofeMatrix(lm, self.leftFF)
@@ -51,7 +56,7 @@ class Fofe:
 
         return i
 
-    def rightContextMatrix(self, lookahead):
+    def rightContextFFMatrix(self, lookahead):
         l = self.leftPowersMatrix(self.document.length())
         r = l.T
         for look in range(0, lookahead):
@@ -65,4 +70,39 @@ class Fofe:
         matrix = np.roll(matrix, 1)[:, :matrix.shape[1]-1]
 
         return matrix
+
+    def doc2matrix(self):
+        data = []
+        for token in self.document.tokens:
+            data.append(token.onehot())
+        return np.array(data)
+
+    def encode(self):
+
+        doc = tf.Variable(self.docMatrix,name='doc')
+        L = tf.Variable(self.leftFFMatrix, name='LeftFF')
+        F = tf.Variable(self.focusFFMatrix, name='FocusFF')
+        R = tf.Variable(self.rightFFMatrix, name='rightFF')
+        init = tf.global_variables_initializer()
+
+        left_f = tf.matmul(L,doc)
+        focus_f = tf.matmul(F,doc)
+        right_f = tf.matmul(R,doc)
+
+        with tf.Session() as sess:
+            init.run()
+            left = left_f.eval()
+            focus = focus_f.eval()
+            right = right_f.eval()
+
+
+        #left = self.leftFFMatrix.dot(self.docMatrix)
+        #focus = self.focusFFMatrix.dot(self.docMatrix)
+        #right = self.rightFFMatrix.dot(self.docMatrix)
+
+        return left, focus, right
+
+
+
+
 

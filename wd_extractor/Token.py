@@ -6,5 +6,5 @@ class Token:
         self.word = word
         self.attributes = attributes
 
-    def one_hot(self):
-        return self.document.corpus.vocab.one_hot(self)
+    def onehot(self):
+        return self.document.corpus.vocab.onehot(self)
