@@ -35,3 +35,7 @@ ChangeLog
 # Editors
 *~
 .*.swp
+
+#Pycharm
+.idea/workspace.xml
+.idea/task.xml
