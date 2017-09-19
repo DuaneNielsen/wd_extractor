@@ -1,13 +1,19 @@
 from wd_extractor.Corpus import Corpus
 from pathlib import PosixPath,Path
+from enum import Enum
 import pytest
+
+
+class Labels(Enum):
+    COMPANY = 1
+    PERSON = 2
 
 @pytest.fixture(scope="module")
 def corpus():
     pathlist = Path('tests/data/corpus/').glob('*.txt')
     path = next(pathlist)
     assert path == PosixPath('tests/data/corpus/vocabtest.txt')
-    return Corpus('tests/data/corpus/', '*.txt')
+    return Corpus('tests/data/corpus/', '*.txt',Labels)
 
 
 def setup_module():
